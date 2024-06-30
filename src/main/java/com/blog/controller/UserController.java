@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.blog.entities.Users;
 import com.blog.payload.ApiResponse;
+import com.blog.payload.CategoryDto;
 import com.blog.payload.UserDto;
 import com.blog.services.UserServices;
 
@@ -53,7 +54,7 @@ public class UserController {
 	
 //	Update
 	@PutMapping("/{id}")
-	public ResponseEntity<UserDto>updateUser( @RequestBody UserDto users,   @PathVariable(name = "id") Long id  ){
+	public ResponseEntity<UserDto>updateUser(@Valid    @RequestBody UserDto users,   @PathVariable(name = "id") Long id  ){
 		UserDto data=services.updateUser(users, id);
 		
 		return new ResponseEntity<UserDto>(data, HttpStatus.OK);
